@@ -9,7 +9,6 @@ def is_contained(first_range, second_range):
 
 
 def cleanup():
-    ranges = []
     input_file = open('Camp-Cleanup.txt', 'r')
     total_contained = 0
     total_overlaped = 0
@@ -18,7 +17,6 @@ def cleanup():
         (first, second) = new_arr
         first_range = tuple(map(int, first.split('-')))
         second_range = tuple(map(int, second.split('-')))
-        ranges.append((first_range, second_range))
 
         if is_contained(first_range, second_range):
             total_contained += 1
@@ -27,8 +25,7 @@ def cleanup():
 
     return total_contained, total_overlaped
 
-def is_overlaped(ranges):
-    first_range, second_range = ranges
+def is_overlaped(first_range, second_range):
     first_start, first_end = first_range
     second_start, second_end = second_range
 
@@ -36,5 +33,5 @@ def is_overlaped(ranges):
     or second_end >= first_end >= second_start \
     or is_contained(first_range, second_range)
 
-# first_range, second_range
+
 print(cleanup())
